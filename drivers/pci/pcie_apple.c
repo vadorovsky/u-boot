@@ -336,7 +336,7 @@ static int apple_pcie_probe(struct udevice *dev)
 	struct apple_pcie_priv *pcie = dev_get_priv(dev);
 	fdt_addr_t addr;
 	ofnode of_port;
-	int i, ret;
+	int i = 0, ret;
 
 	pcie->hw = (struct reg_info *)dev_get_driver_data(dev);
 
@@ -363,6 +363,7 @@ static int apple_pcie_probe(struct udevice *dev)
 			dev_err(pcie->dev, "Port %d setup fail: %d\n", i, ret);
 			return ret;
 		}
+		i++;
 	}
 
 	return 0;
